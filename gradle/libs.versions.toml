@@ -1,0 +1,16 @@
+[versions]
+compileSdk = "32"
+buildTools = "32.0.0"
+minSdk = "16"
+targetSdk = "32"
+versionCode = "1"
+versionName = "1.0.0"
+annotation = "1.3.0"
+appcompat = "1.4.2"
+
+[libraries]
+androidx-annotation = { module="androidx.annotation:annotation", version.ref="annotation"}
+# https://developer.android.google.cn/jetpack/androidx/releases/appcompat
+androidx-appcompat = { module="androidx.appcompat:appcompat", version.ref="appcompat"}
+
+[bundles]
