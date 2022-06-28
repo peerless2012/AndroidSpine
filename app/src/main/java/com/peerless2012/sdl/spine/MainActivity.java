@@ -1,10 +1,9 @@
 package com.peerless2012.sdl.spine;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import org.libsdl.app.SDLActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends SDLActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

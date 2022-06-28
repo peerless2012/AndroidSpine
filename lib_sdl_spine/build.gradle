@@ -13,6 +13,25 @@ android {
         versionName libs.versions.versionName.get()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        externalNativeBuild {
+            ndkBuild {
+                arguments "APP_PLATFORM=android-21"
+                abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            }
+//             cmake {
+//                 arguments "-DANDROID_APP_PLATFORM=android-16", "-DANDROID_STL=c++_static"
+//                 abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+//             }
+        }
+    }
+
+    sourceSets{
+        main{
+            java {
+                srcDirs "src/main/cpp/SDL/android-project/app/src/main/java"
+            }
+        }
     }
 
     buildTypes {
@@ -30,6 +49,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'src/main/cpp/Android.mk'
+        }
+//        cmake {
+//            path 'src/main/cpp/CMakeLists.txt'
+//            version "3.18.1"
+//        }
     }
 }
 
