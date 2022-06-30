@@ -30,7 +30,8 @@
 #include <iostream>
 #include <spine/Debug.h>
 #include <spine/Log.h>
-#include <spine-sdl.h>
+#include "spine/spine.h"
+#include <spine/spine-sdl.h>
 #include <random>
 
 using namespace std;
