@@ -6,7 +6,7 @@
 	url = https://github.com/libsdl-org/SDL_image.git
 [submodule "lib_sdl_spine/src/main/cpp/SDL_spine"]
 	path = lib_sdl_spine/src/main/cpp/SDL_spine
-	url = git@github.com:peerless2012/SDL_spine.git
+	url = https://github.com/peerless2012/SDL_spine.git
 [submodule "lib_sdl_spine/src/main/cpp/Spine_cpp"]
 	path = lib_sdl_spine/src/main/cpp/Spine_cpp
-	url = git@github.com:peerless2012/Spine_cpp.git
+	url = https://github.com/peerless2012/Spine_cpp.git
