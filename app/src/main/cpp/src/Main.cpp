@@ -607,27 +607,27 @@ int SDL_main(int argc, char* argv[]) {
     SDL_Log("SDL finish init.");
     SpineExtension::setInstance(sdlExtension);
 
-//    while (!done) {
-//        SDL_Event event;
-//        while (SDL_PollEvent(&event)) {
-//            if (event.type == SDL_QUIT
-//                || event.key.keysym.scancode == SDL_SCANCODE_AC_BACK) {
-//                SDL_Log("SDL quite");
-//                done = 1;
-//            }
-//        }
-//        if (!done) {
-//            SDL_RenderClear(renderer);
-//            SDL_SetRenderDrawColor(renderer, random() % 256, random() % 256, random() % 256, 0xFF);
-//            SDL_RenderPresent(renderer);
-//            SDL_Delay(500);
-//        }
-//    }
+    while (!done) {
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT
+                || event.key.keysym.scancode == SDL_SCANCODE_AC_BACK) {
+                SDL_Log("SDL quite");
+                done = 1;
+            }
+        }
+        if (!done) {
+            SDL_RenderClear(renderer);
+            SDL_SetRenderDrawColor(renderer, random() % 256, random() % 256, random() % 256, 0xFF);
+            SDL_RenderPresent(renderer);
+            SDL_Delay(500);
+        }
+    }
 
 //
     printf("\nHit the ESC key or click the close button to move to the next test\n");
 //    testcase(ikDemo, "data/spineboy-pro.json", "data/spineboy-pro.skel", "data/spineboy-pma.atlas", 0.6f);
-    testcase(spineboy, "data/spineboy-pro.json", "data/spineboy-pro.skel", "data/spineboy-pma.atlas", 0.6f);
+//    testcase(spineboy, "data/spineboy-pro.json", "data/spineboy-pro.skel", "data/spineboy-pma.atlas", 0.6f);
 //    testcase(coin, "data/coin-pro.json", "data/coin-pro.skel", "data/coin-pma.atlas", 0.5f);
 //    testcase(mixAndMatch, "data/mix-and-match-pro.json", "data/mix-and-match-pro.skel", "data/mix-and-match-pma.atlas", 0.5f);
 //    testcase(owl, "data/owl-pro.json", "data/owl-pro.skel", "data/owl-pma.atlas", 0.5f);
