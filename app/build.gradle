@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
 }
 
+apply from:'../native_build.gradle'
+
 android {
     compileSdk libs.versions.compileSdk.get().toInteger()
     buildToolsVersion libs.versions.buildTools.get()

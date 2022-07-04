@@ -7,13 +7,15 @@
 #include <spine/Log.h>
 #include <spine-sdl.h>
 #include <memory>
+#include "SDLDemo.h"
+
 /**
-* @Author ZhiMing.Wang
-* @Email wangzhiming@pwrd.com
-* @DateTime 2022/6/20 19:14
-* @Version V1.0
-* @Description 
-*/
+ * @Author peerless2012
+ * @Email peerless2012@126.com
+ * @DateTime 2022/7/4 10:34
+ * @Version V1.0
+ * @Description:
+ */
 
 using namespace std;
 using namespace spine;

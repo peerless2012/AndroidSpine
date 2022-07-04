@@ -13,11 +13,5 @@ add_subdirectory(SDL)
 add_subdirectory(SDL_image)
 #add_subdirectory(SDL_mixer)
 #add_subdirectory(SDL_ttf)
-
-#add_subdirectory(spine)
-
-#add_subdirectory(spine_sdl)
-
-# Your game and its CMakeLists.txt are in a subfolder named "src"
-add_subdirectory(src)
-
+add_subdirectory(Spine_cpp)
+add_subdirectory(SDL_spine)

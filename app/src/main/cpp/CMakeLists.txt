@@ -27,7 +27,7 @@ find_library( # Sets the name of the path variable.
 
 add_library(main SHARED)
 
-target_sources(main PRIVATE YourSourceHere.cpp)
+target_sources(main PRIVATE SDLDemo.cpp)
 
 #target_link_libraries(main SDL2)
 target_link_libraries(main SDL2 SDL2_image ${log-lib} ${android-lib})

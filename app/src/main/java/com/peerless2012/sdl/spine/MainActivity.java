@@ -10,7 +10,7 @@ public class MainActivity extends SDLActivity {
                 "SDL2",
                 "SDL2_image",
                 "SDL2_spine",
-                "main"
+                "SDL2_main"
         };
     }
 

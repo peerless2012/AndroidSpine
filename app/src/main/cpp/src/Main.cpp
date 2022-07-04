@@ -33,6 +33,7 @@
 #include "spine/spine.h"
 #include <spine/spine-sdl.h>
 #include <random>
+#include "Main.h"
 
 using namespace std;
 using namespace spine;
