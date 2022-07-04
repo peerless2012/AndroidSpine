@@ -6,9 +6,7 @@ find_library(SDL2 SDL2)
 
 find_library(SDL2_image SDL2_image)
 
-#find_library(spine_sdl spine_sdl)
-
-#find_library(spine-cpp spine-cpp)
+find_library(SDL2_spine SDL2_spine)
 
 find_library( # Sets the name of the path variable.
         log-lib
@@ -25,12 +23,9 @@ find_library( # Sets the name of the path variable.
         android )
 
 
-add_library(main SHARED)
+add_library(SDL2_main SHARED)
 
-target_sources(main PRIVATE SDLDemo.cpp)
+target_sources(SDL2_main PRIVATE src/Main.cpp)
 
-#target_link_libraries(main SDL2)
-target_link_libraries(main SDL2 SDL2_image ${log-lib} ${android-lib})
-#target_link_libraries(main SDL2 SDL_image spine-cpp)
-#target_link_libraries(main spine_sdl)
+target_link_libraries(SDL2_main SDL2 SDL2_image SDL2_spine ${log-lib} ${android-lib})
 
