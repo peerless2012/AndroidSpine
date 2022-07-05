@@ -9,4 +9,10 @@
 #ifndef ANDROIDSDLSPINE_MAIN_H
 #define ANDROIDSDLSPINE_MAIN_H
 
+#include <iostream>
+#include <spine/Debug.h>
+#include <spine/Log.h>
+#include <spine/spine.h>
+#include <spine/spine-sdl.h>
+
 #endif //ANDROIDSDLSPINE_MAIN_H

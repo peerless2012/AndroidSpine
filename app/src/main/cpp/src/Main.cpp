@@ -27,12 +27,6 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-#include <iostream>
-#include <spine/Debug.h>
-#include <spine/Log.h>
-#include "spine/spine.h"
-#include <spine/spine-sdl.h>
-#include <random>
 #include "Main.h"
 
 using namespace std;
@@ -40,6 +34,10 @@ using namespace spine;
 
 SDL_Window *window;
 SDL_Renderer *renderer;
+
+static int windowWidth = 0;
+
+static int windowHeight = 0;
 
 template<typename T, typename... Args>
 unique_ptr<T> make_unique_test(Args &&...args) {
@@ -127,7 +125,7 @@ void spineboy(SkeletonData *skeletonData, Atlas *atlas) {
     Skeleton *skeleton = drawable.skeleton;
     skeleton->setToSetupPose();
 
-    skeleton->setPosition(320, 590);
+    skeleton->setPosition(windowWidth / 2 - 188, windowHeight / 2 -7);
     skeleton->updateWorldTransform();
 
     Slot *headSlot = skeleton->findSlot("head");
@@ -265,12 +263,6 @@ void raptor(SkeletonData *skeletonData, Atlas *atlas) {
     drawable.timeScale = 1;
     drawable.setUsePremultipliedAlpha(true);
 
-    PowInterpolation pow2(2);
-    PowOutInterpolation powOut2(2);
-    SwirlVertexEffect effect(400, powOut2);
-    effect.setCenterY(-200);
-    drawable.vertexEffect = &effect;
-
     Skeleton *skeleton = drawable.skeleton;
     skeleton->setPosition(320, 590);
     skeleton->updateWorldTransform();
@@ -278,18 +270,11 @@ void raptor(SkeletonData *skeletonData, Atlas *atlas) {
     drawable.state->setAnimation(0, "walk", true);
     drawable.state->addAnimation(1, "gun-grab", false, 2);
 
-    float swirlTime = 0;
-
     Uint32 prev_time = 0;
     do {
         Uint32 curr_time = SDL_GetTicks();
         if (prev_time > 0) {
             float delta = (float)(curr_time - prev_time) / 1000.0f;
-
-            swirlTime += delta;
-            float percent = MathUtil::fmod(swirlTime, 2);
-            if (percent > 1) percent = 1 - (percent - 1);
-            effect.setAngle(pow2.interpolate(-60.0f, 60.0f, percent));
 
             drawable.update(delta);
 
@@ -562,7 +547,10 @@ protected:
 
     char *_readFile(const String &path, int *length) override {
 //        return DebugExtension::_readFile(path, length);
-        return static_cast<char *>(SDL_LoadFile(path.buffer(), NULL));
+        size_t lengthSizeT = 0;
+        auto file = SDL_LoadFile(path.buffer(), &lengthSizeT);
+        *length = lengthSizeT;
+        return static_cast<char *>(file);
     }
 };
 
@@ -602,33 +590,19 @@ int SDL_main(int argc, char* argv[]) {
     }
 
     SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, random() % 256, random() % 256, random() % 256, 0xFF);
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderPresent(renderer);
     SDL_Log("SDL finish init.");
+
+    SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+    SDL_Log("SDL window width = %d, height = %d", windowWidth, windowHeight);
+
     SpineExtension::setInstance(sdlExtension);
-
-//    while (!done) {
-//        SDL_Event event;
-//        while (SDL_PollEvent(&event)) {
-//            if (event.type == SDL_QUIT
-//                || event.key.keysym.scancode == SDL_SCANCODE_AC_BACK) {
-//                SDL_Log("SDL quite");
-//                done = 1;
-//            }
-//        }
-//        if (!done) {
-//            SDL_RenderClear(renderer);
-//            SDL_SetRenderDrawColor(renderer, random() % 256, random() % 256, random() % 256, 0xFF);
-//            SDL_RenderPresent(renderer);
-//            SDL_Delay(500);
-//        }
-//    }
-
 //
     printf("\nHit the ESC key or click the close button to move to the next test\n");
 //    testcase(ikDemo, "data/spineboy-pro.json", "data/spineboy-pro.skel", "data/spineboy-pma.atlas", 0.6f);
-//    testcase(spineboy, "data/spineboy-pro.json", "data/spineboy-pro.skel", "data/spineboy-pma.atlas", 0.6f);
-    testcase(coin, "data/coin-pro.json", "data/coin-pro.skel", "data/coin-pma.atlas", 0.5f);
+    testcase(spineboy, "data/spineboy-pro.json", "data/spineboy-pro.skel", "data/spineboy-pma.atlas", 0.6f);
+//    testcase(coin, "data/coin-pro.json", "data/coin-pro.skel", "data/coin-pma.atlas", 0.5f);
 //    testcase(mixAndMatch, "data/mix-and-match-pro.json", "data/mix-and-match-pro.skel", "data/mix-and-match-pma.atlas", 0.5f);
 //    testcase(owl, "data/owl-pro.json", "data/owl-pro.skel", "data/owl-pma.atlas", 0.5f);
 //    testcase(vine, "data/vine-pro.json", "data/vine-pro.skel", "data/vine-pma.atlas", 0.5f);

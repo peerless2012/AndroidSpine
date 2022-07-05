@@ -30,7 +30,10 @@ LOCAL_C_INCLUDES += $(LOCAL_SO_HEADER_PATH)/SDL_spine/include
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_C_INCLUDES)
 
-LOCAL_SRC_FILES := src/main.cpp
+LOCAL_SRC_FILES := \
+		$(subst $(LOCAL_PATH)/,, \
+			$(wildcard $(LOCAL_PATH)/src/*.cpp) \
+		)
 
 # 引用三方动态库或静态库，使用预构建
 # https://developer.android.com/ndk/guides/prebuilts?hl=zh-cn
