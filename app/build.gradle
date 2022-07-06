@@ -9,12 +9,34 @@ android {
     compileSdk libs.versions.compileSdk.get().toInteger()
     buildToolsVersion libs.versions.buildTools.get()
     defaultConfig {
-        applicationId "com.peerless2012.sdl.spine"
+        applicationId "com.peerless2012.spine.demo"
         minSdk libs.versions.minSdk.get().toInteger()
         targetSdk libs.versions.targetSdk.get().toInteger()
         versionCode libs.versions.versionCode.get().toInteger()
         versionName libs.versions.versionName.get()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions "impl","build"
+
+    productFlavors {
+        // SDL
+        'sdl' {
+            dimension "impl"
+            applicationIdSuffix ".sdl"
+        }
+
+        // OpenGL
+        'gl' {
+            dimension "impl"
+            applicationIdSuffix ".gl"
+        }
+
+        // Vulkan
+        'vk' {
+            dimension "impl"
+            applicationIdSuffix ".vk"
+        }
     }
 
     buildTypes {
@@ -44,7 +66,9 @@ android {
 }
 
 dependencies {
-    implementation project(":lib_sdl_spine")
+    sdlImplementation project(":lib_sdl_spine")
+    glImplementation project(":lib_gl_spine")
+    vkImplementation project(":lib_vk_spine")
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'com.google.android.material:material:1.6.1'
     testImplementation 'junit:junit:4.13.2'

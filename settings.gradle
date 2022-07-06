@@ -16,3 +16,5 @@ enableFeaturePreview("VERSION_CATALOGS")
 rootProject.name = "AndroidSDLSpine"
 include ':app'
 include ':lib_sdl_spine'
+include ':lib_gl_spine'
+include ':lib_vk_spine'
