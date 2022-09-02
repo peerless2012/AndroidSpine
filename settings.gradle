@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 enableFeaturePreview("VERSION_CATALOGS")
-rootProject.name = "AndroidSDLSpine"
+rootProject.name = "AndroidSpine"
 include ':app'
 include ':lib_sdl_spine'
 include ':lib_gl_spine'

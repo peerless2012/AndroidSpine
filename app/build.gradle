@@ -37,6 +37,14 @@ android {
             dimension "impl"
             applicationIdSuffix ".vk"
         }
+
+        'ndk' {
+            dimension "build"
+        }
+
+        'cmake' {
+            dimension "build"
+        }
     }
 
     buildTypes {
