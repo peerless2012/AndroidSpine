@@ -1,3 +1,6 @@
+[submodule "contrib/Spine_cpp"]
+	path = contrib/Spine_cpp
+	url = https://github.com/peerless2012/Spine_cpp.git
 [submodule "lib_sdl_spine/src/main/cpp/SDL"]
 	path = lib_sdl_spine/src/main/cpp/SDL
 	url = https://github.com/libsdl-org/SDL.git
@@ -7,6 +10,3 @@
 [submodule "lib_sdl_spine/src/main/cpp/SDL_spine"]
 	path = lib_sdl_spine/src/main/cpp/SDL_spine
 	url = https://github.com/peerless2012/SDL_spine.git
-[submodule "lib_sdl_spine/src/main/cpp/Spine_cpp"]
-	path = lib_sdl_spine/src/main/cpp/Spine_cpp
-	url = https://github.com/peerless2012/Spine_cpp.git

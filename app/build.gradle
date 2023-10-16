@@ -21,6 +21,12 @@ android {
 
     productFlavors {
         // SDL
+        'cv' {
+            dimension "impl"
+            applicationIdSuffix ".cv"
+        }
+
+        // SDL
         'sdl' {
             dimension "impl"
             applicationIdSuffix ".sdl"
@@ -74,6 +80,7 @@ android {
 }
 
 dependencies {
+    cvImplementation project(':lib_cv_spine')
     sdlImplementation project(":lib_sdl_spine")
     glImplementation project(":lib_gl_spine")
     vkImplementation project(":lib_vk_spine")
